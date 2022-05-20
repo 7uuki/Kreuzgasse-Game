@@ -11,20 +11,23 @@ public class Script : MonoBehaviour
 
     public float runSpeed = 5f;
 
-    void Start()
+    void Start() //wird bei jedem start 1mal ausgeführt
     {
         rbody = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void Update() //runns for every rendered physik frame (of the engine) ==> User Abhänig
     {
         // Gives a value between -1 and 1
+        
         movement.x = Input.GetAxisRaw("Horizontal"); // -1 is left
         movement.y = Input.GetAxisRaw("Vertical"); // -1 is down
+
     }
 
-    void FixedUpdate()
+    void FixedUpdate() //runns for ervery set physik frame ==> User Unbhänig
     {
+        //TODO:
         rbody.MovePosition(rbody.position + movement * runSpeed * Time.fixedDeltaTime);
        
     }
